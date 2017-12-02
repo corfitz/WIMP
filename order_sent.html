@@ -1,0 +1,18 @@
+<{include file="_include_mails-header.html"}>
+
+<p>Hej <{$order->getOrderName()|escape}>,</p>
+
+<h4>Din ordre er sendt!</h4>
+
+<p>Vi har nu sendt din ordre. Ordren har nr. #<{$order->getWebshopOrderId()}>. Vi håber, at hele oplevelsen med at handle hos os, lever op til forventningerne.</p>
+
+<{if $order->getTrackingNumber()}>
+    <{assign var="shipping" value=$order->getShipping()}>
+
+    <{assign var="cta" value="Følg din ordre hos "|cat:$shipping->getName()}>
+    <{include file="_include_mails-cta.html" cta=$cta url=$order->getTrackingUrl()}>
+<{/if}>
+
+<p>Med venlig hilsen<br><{$webshop->getName()}></p>
+
+<{include file="_include_mails-footer.html"}>

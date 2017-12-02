@@ -1,0 +1,99 @@
+<{strip}>
+<{assign var="ttl" value=$settings.Caching.LevetidFooter|default:3600}>
+<{get_cache name="shoporama_footer" ttl=$ttl assign="shoporama_footer_data"}>
+
+<{if $shoporama_footer_data}>
+    <{$shoporama_footer_data}>
+<{else}>
+    <{cache name="shoporama_footer"}>
+
+<footer id="sitefoot">
+    <div id="sitefoot-head">
+        <div class="container"><div class="row"><div class="col-xs-12">
+            <{include file="_include_paymentcards.html"}>
+        </div></div></div>
+    </div>
+
+    <div id="sitefoot-foot">
+        <div class="container"><div class="row">
+        <div  class="sitefoot-box col-xs-12 col-md-3">
+            <div class="sitefoot-box-inner">
+
+                <{if $settings.Footer.Navn}><h4><{$settings.Footer.Navn}></h4><{/if}>
+                <{if $settings.Footer.Adresse}><{$settings.Footer.Adresse}><br><{/if}>
+                <{if $settings.Footer.Postnr}><{$settings.Footer.Postnr}><{/if}> <{if $settings.Footer.By}><{$settings.Footer.By}><br><br><{/if}>
+                <{if $settings.Footer.Telefon}>Tlf. <a href="tel:0045<{$settings.Footer.Telefon|escape|replace:' ':''}>"><{$settings.Footer.Telefon}></a><br><{/if}>
+                <{if $settings.Footer.Email}><a href="mailto:<{$settings.Footer.Email}>"><{$settings.Footer.Email}></a><br><br><{/if}>
+                <{if $settings.Footer.CVR}>CVR <{$settings.Footer.CVR}><br><{/if}>
+
+            </div>
+        </div>
+        <div  class="sitefoot-box col-xs-12 col-md-3">
+            <div class="sitefoot-box-inner">
+
+                <{assign var="menu" value=$webshop->getMenu("footermenukategorier")}>
+                <{if $menu}>
+                    <{assign var="items" value=$menu->getItems()}>
+                    <ul>
+                        <{section name="i" loop=$items}>
+                            <li class="<{$items[i]->getClass()|escape}>">
+                                <{if $items[i]->getType() == "menu"}>
+                                    <{assign var="subitems" value=$items[i]->getItems()}>
+                                    <{$items[i]->getTitel()|escape}>
+                                    <ul>
+                                        <{section name="j" loop=$subitems}>
+                                            <li class="<{$subitems[j]->getClass()|escape}>"><a href="<{$subitems[j]->getUrl()|escape}>"><{$subitems[j]->getTitel()|escape}></a></li>
+                                        <{/section}>
+                                    </ul>
+                                <{else}>
+                                    <a href="<{$items[i]->getUrl()|escape}>"><{$items[i]->getTitel()|escape}></a>
+                                <{/if}>
+                            </li>
+                        <{/section}>
+                    </ul>
+                <{else}>
+                    <div class="themeinfo">Du mangler at definere menu her. Brug navn: footermenu-kategorier</div>
+                <{/if}>
+
+            </div>
+        </div>
+        <div  class="sitefoot-box col-xs-12 col-md-3">
+            <div class="sitefoot-box-inner">
+
+                <{assign var="menu" value=$webshop->getMenu("footermenupraktisk")}>
+                <{if $menu}>
+                    <{assign var="items" value=$menu->getItems()}>
+                    <ul>
+                        <{section name="i" loop=$items}>
+                            <li class="<{$items[i]->getClass()|escape}>">
+                                <{if $items[i]->getType() == "menu"}>
+                                    <{assign var="subitems" value=$items[i]->getItems()}>
+                                    <{$items[i]->getTitel()|escape}>
+                                    <ul>
+                                        <{section name="j" loop=$subitems}>
+                                            <li class="<{$subitems[j]->getClass()|escape}>"><a href="<{$subitems[j]->getUrl()|escape}>"><{$subitems[j]->getTitel()|escape}></a></li>
+                                        <{/section}>
+                                    </ul>
+                                <{else}>
+                                    <a href="<{$items[i]->getUrl()|escape}>"><{$items[i]->getTitel()|escape}></a>
+                                <{/if}>
+                            </li>
+                        <{/section}>
+                    </ul>
+                <{else}>
+                    <div class="themeinfo">Du mangler at definere menu her. Brug navn: footermenu-praktisk</div>
+                <{/if}>
+
+            </div>
+        </div>
+        <div class="sitefoot-box col-xs-12 col-md-3">
+            <div class="sitefoot-box-inner somelinks">
+                <{include file="_include_socialicons.html"}>
+            </div>
+        </div>
+    </div>
+    </div></div><!--/.row /.container-->
+</footer><!--/#sitefoot-->
+<{/cache}>
+<{/if}>
+<{/strip}>

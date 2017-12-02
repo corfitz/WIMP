@@ -1,0 +1,156 @@
+<{if $order && $order->getStatus() != 'cancelled'}>
+
+<{if $get.voted}>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+            <div id="checkout-content" class="checkout-pages thanks">
+
+                <{if settings.globale.Logo}>
+                <div id="approve-logo" style="margin-bottom: 2em;">
+                    <a href="/" id="logo" title="<{$webshop->getName()|escape}>"><img src="<{$settings.globale.Logo->getSrc(350, 100, 'fit')}>" id="logo-img" alt="<{$webshop->getName()|escape}>"></a>
+                </div>
+                <{/if}>
+
+                <div class="thanksicn"><i class="glyphicon glyphicon-thumbs-up"></i></div>
+
+                <h1>Tak for din anmeldelse</h1>
+
+                <p>Vi glæder os til at læse den.</p>
+                <p><strong>Ha' en fantastisk dag!</strong></p>
+
+                <{include file="_include_socialicons.html"}>
+
+                <{if $settings.Anmeldelse.Aktiv == 'ja'}>
+                    <{if $get.ratings==1 || $get.ratings==2}>
+                        <p>P.S.Hvorfor levede produktet ikke op til dine forventninger? Vi vil rigtig gerne høre fra dig, hvis du vil dele din oplevelse:</p>
+                        <p><a class="btn btn-lg btn-primary" href="mailto:<{$settings.Footer.Email}>">Send os en mail</a></p>
+                    <{/if}>
+                    <{if $get.ratings==5}>
+                        <p>P.S. Vi vil blive rigtig glade, hvis du vil dele din oplevelse med at handle hos os. Det tager kun 2 minutter og betyder meget for os:</p>
+                        <{include file="_include_shop-review.html"}>
+                    <{/if}>
+                <{/if}>
+            </div>
+        </div>
+    </div>
+</div>
+
+<{else}>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+            <div class="checkout-pages">
+
+                <{if settings.globale.Logo}>
+                <div id="approve-logo">
+                    <a href="/" id="logo" title="<{$webshop->getName()|escape}>"><img src="<{$settings.globale.Logo->getSrc(350, 100, 'fit')}>" id="logo-img" alt="<{$webshop->getName()|escape}>"></a>
+                </div>
+                <{/if}>
+                <div class="approve-section">
+                    <h1>Anmeld dit køb</h1>
+                </div>
+
+                <{assign var="products" value=$order->getOrderProducts()}>
+
+                <form action="" method="post">
+                    <div class="approve-section order-details">
+                        <!-- <small class="right">
+                            Ordre ID: <{$order->getWebshopOrderId()}>
+                        </small> -->
+                        <ul id="basket-content-list">
+                            <{section name="i" loop=$products}>
+                            <li class="basket-content-listitem">
+                                <div class="row">
+                                <div class="col-lg-4">
+                                <{assign var="images" value=$products[i]->getImages()}>
+                                <{section name="j" loop=$images max=1}>
+                                <img src="<{$images[j]->getSrc(175, 175, 'box')}>" alt="<{$products[i]->getName()}>"><br>
+                                <{/section}>
+                                </div>
+                                <div class="col-lg-8">
+                                <h4>
+                                    <{$products[i]->getName()|escape}>
+                                    <small>(<{$webshop->getCurrency()}> <{$products[i]->getUnitPrice()|number_format:2:",":"."}>)</small>
+                                </h4>
+
+                                <{assign var="attributes" value=$products[i]->getAttributes()}>
+                                <{if $attributes}>
+                                    <ul>
+                                        <{section name="j" loop=$attributes}>
+                                        <li><{$attributes[j].name}>: <{$attributes[j].val}></li>
+                                        <{/section}>
+                                    </ul>
+                                <{/if}>
+                                        <p style="margin-top: 1em;"><strong>Hvor mange stjerner skal produktet have?</strong></p>
+                                        <fieldset id="rating" class="rating" style="margin-left: -4px;">
+                                            <input type="radio" id="star5" name="rating[<{$products[i]->getProductId()}>]" value="5" />
+                                            <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                            <input type="radio" id="star4" name="rating[<{$products[i]->getProductId()}>]" value="4" />
+                                            <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                            <input type="radio" id="star3" name="rating[<{$products[i]->getProductId()}>]" value="3" />
+                                            <label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                            <input type="radio" id="star2" name="rating[<{$products[i]->getProductId()}>]" value="2" />
+                                            <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                            <input type="radio" id="star1" name="rating[<{$products[i]->getProductId()}>]" value="1" />
+                                            <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                                        </fieldset>
+                                    <!-- <select name="rating[<{$products[i]->getProductId()}>]">
+                                        <option value="1">*</option>
+                                        <option value="2">**</option>
+                                        <option value="3">***</option>
+                                        <option value="4">****</option>
+                                        <option value="5">*****</option>
+                                    </select> -->
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12" style="margin-top: 3em; clear: both;">
+                                    <textarea placeholder="Skriv en anmeldelse af <{$products[i]->getName()|escape}>" name="description[<{$products[i]->getProductId()}>]"></textarea>
+                                </div>
+                            </div>
+                        </li>
+                        <{/section}>
+                    </ul>
+
+                    <br/>
+
+                    <input class="btn btn-primary btn-lg" type="submit" value="Gem din anmeldelse"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+<{/if}>
+
+<{else}>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+            <div id="checkout-content" class="checkout-pages thanks">
+
+                <{if settings.globale.Logo}>
+                <div id="approve-logo" style="margin-bottom: 2em;">
+                    <a href="/" id="logo" title="<{$webshop->getName()|escape}>"><img src="<{$settings.globale.Logo->getSrc(350, 100, 'fit')}>" id="logo-img" alt="<{$webshop->getName()|escape}>"></a>
+                </div>
+                <{/if}>
+
+                <div class="thanksicn"><i class="glyphicon glyphicon-star"></i></div>
+
+                <h1>Der er ingen produkter at anmelde</h1>
+
+                <p>Du har ikke fået denne ordre, og derfor kan du ikke anmelde produkterne.</p>
+                <p><strong><a href="/">Shop on</a></strong></p>
+
+                <{include file="_include_socialicons.html"}>
+
+            </div>
+        </div>
+    </div>
+</div>
+<{/if}>

@@ -1,0 +1,306 @@
+#basket-content-list {
+    list-style-type: none;
+    margin: 0 0 30px 0;
+    padding: 0;
+
+    #basket-content-listhead {
+        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        color: #666;
+        font-size: 100%;
+        padding: 15px 0;
+        text-transform: uppercase;
+    }
+
+    .basket-content-listitem {
+        border-bottom: 1px solid #eee;
+        padding: 15px 0;
+    }
+
+    .basket-content-listitem > a,
+    .basket-content-listitem > span {
+        color: #333;
+        display: block;
+    }
+
+    .basket-content-listitem:after {
+        clear: both;
+        content: '';
+        display: block;
+    }
+
+    .basket-content-listitem .left,
+    .basket-content-listitem .right {
+        padding: 0;
+    }
+
+    .basket-content-listitem-attr {
+        font-style: italic;
+        font-weight: 600;
+    }
+
+    .basket-content-listitem-amount {
+        float: left;
+        margin-right: 10px;
+    }
+
+    .outofstock {
+        color: red;
+        font-weight: 600;
+    }
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+#basket-summary {
+    margin-bottom: 30px;
+    text-align: right;
+}
+
+#basket-subtotal,
+#basket-shipping,
+#basket-vat,
+#basket-total {
+    display: block;
+}
+
+#basket-subtotal {
+
+}
+
+#basket-shipping {
+
+}
+
+#basket-vat {
+
+}
+
+.basketpage {
+
+}
+
+#basket-persuasion {
+    float: right;
+    padding-top: 30px;
+    width: 60%;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        text-align: right;
+
+        li {
+            display: inline-block;
+            margin-left: 20px;
+
+            &:before {
+                content: "\e013";
+                float: left;
+                font-family: 'Glyphicons Halflings';
+                margin-right: 5px;
+            }
+
+            &:after {
+                clear: both;
+                content: '';
+                display: block;
+            }
+        }
+    }
+
+    @media (max-width: @screen-sm) {
+        display: none;
+    }
+}
+
+#basket-total {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    font-size: 150%;
+    margin: 30px 0 10px 0;
+    padding: 10px 0;
+
+    span {
+        float: right;
+    }
+}
+
+#basket-content-shipping {
+    span.country-selecter {
+        display: inline-block;
+        margin: 0 5px;
+    }
+}
+
+#basket-voucher {
+    margin: 0 0 30px 0;
+
+    > .input-group {
+        padding: 0;
+    }
+
+    input {
+        background: #fafafa;
+        border: 0 none;
+        height: 40px;
+        line-height: 40px;
+        padding: 0px 15px;
+        width: 100%;
+    }
+
+    &::after {
+        clear: both;
+        content: '';
+        display: block;
+    }
+
+    button {
+        height: 34px;
+        line-height: 34px;
+        margin: 3px 5px 0 0;
+        padding: 0 10px;
+        position: absolute;
+        right: 3px;
+        top: 0;
+    }
+}
+
+#basket-voucher-line {
+    color: #519310;
+    font-size: 140%;
+    text-align: right;
+}
+
+.removefrombasket {
+    background: transparent;
+    border: 0 none;
+    opacity: 0.6;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+#basket-shipping-method {
+    border-bottom: 1px solid #DDDDDD;
+    margin-bottom: 30px;
+    padding: 0 0 30px;
+}
+
+input.voucher-active {
+    background: #c6eda3;
+    border-color: #519310;
+}
+
+button.voucher-active {
+    border-color: #519310;
+    color: #519310;
+}
+
+#basket-trust {
+    margin-top: 20px;
+}
+
+#basket {
+    overflow-y: scroll;
+
+    #basket-content-list {
+        #basket-content-listhead {
+            border-bottom: 1px solid #ddd;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+
+        .basket-content-listitem {
+            border-bottom: 1px solid #ddd;
+
+            a {
+                color: #333;
+            }
+        }
+    }
+
+    #basket-total {
+        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+    }
+}
+
+#basket-shipping-shop-select {
+    margin-bottom: 30px;
+    width: 100%;
+
+    .line {
+        display: block;
+
+        &:after {
+            clear: both;
+            content: '';
+            display: block;
+        }
+
+        input {
+            float: left;
+            margin-right: 10px;
+        }
+
+        span.shipping-name {
+            float: left;
+        }
+
+        span.shipping-price {
+            clear: both;
+            display: block;
+            font-size: 13px;
+
+            @media (min-width: @screen-sm) {
+                clear: none;
+                display: inline-block;
+                float: right;
+                font-size: 16px;
+            }
+        }
+    }
+
+    #basket-shipping-shop-select-pos {
+        float: right;
+        width: 100%;
+
+        @media (min-width: @screen-sm) {
+            width: 340px;
+        }
+    }
+
+    &:after {
+        clear: both;
+        content: '';
+        display: block;
+    }
+
+    @media (max-width: @screen-sm) {
+        &:before {
+            content: 'Vælg levering';
+            font-size: 130%;
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+    }
+}
+
+#outofstock-message {
+    background: #f5f4bc;
+    border: 1px solid #e0df8e;
+    clear: both;
+    display: block;
+    margin-bottom: 30px;
+    padding: 20px;
+}

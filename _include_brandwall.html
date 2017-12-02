@@ -1,0 +1,20 @@
+<{assign var="landingpages" value=$webshop->getLandingPagesByTags('brandwall')}>
+<{if $landingpages}>
+
+<section id="brands">
+        <div class="container"><div class="row" id="brands-slided">
+            <{section name="i" loop=$landingpages}>
+            <div>
+                <a href="<{$landingpages[i]->getUrl()|escape}>" title="<{$landingpages[i]->getName()|escape}>">
+                <{assign var="images" value=$landingpages[i]->getImages()}>
+                <{if $images}>
+                    <{section name="j" loop=$images start=0 max=1}>
+                        <img src="<{$images[j]->getSrc(245, 120, 'fit')}>">
+                    <{/section}>
+                <{/if}>
+            </a>
+            </div>
+        <{/section}>
+    </div></div>
+</section>
+<{/if}>

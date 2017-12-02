@@ -1,0 +1,84 @@
+<{strip}>
+<{capture name="title"}><{$page->getHeadline()}><{/capture}>
+<{assign var="cachePage" value=$page->getPageId()}>
+<{assign var="cachePageData" value=$page->getPageId()|cat:'_data'}>
+<{assign var="ttl" value=$settings.Caching.LevetidSide|default:3600}>
+
+    <div id="site" class="staticpage">
+        <{include file="_include_header.html"}>
+        <{get_cache name=$cachePage ttl=$ttl assign="cachePageData"}>
+        <{if $cachePageData}>
+            <{$cachePageData}>
+        <{else}>
+        <{cache name=$cachePage}>
+        <section id="sitecontent">
+            <{assign var="images" value=$page->getImages()}>
+            <{if $images|@count > 0}>
+            <section id="brandidentity" style="background-image: url(<{$images[0]->getSrc(1000, 1000, 'fit')}>);">
+                <div id="brandidentity-content">
+                    <h1 style="color: white;"><{$page->getHeadline()|escape}></h1>
+                </div>
+            </section><!--/#brandidentity-->
+            <{/if}>
+
+            <section id="page-content">
+                <div class="container"><div class="row"><div class="col-xs-12 col-md-8 col-md-offset-2">
+
+                    <{if $images|@count < 1}>
+                    <h1><{$page->getHeadline()|escape}></h1>
+                    <{/if}>
+
+                    <{$page->getText()}>
+
+                    <{if $images}>
+                        <div class="pageimages">
+
+                            <{if $images|@count == 1}>
+
+                                <{section name="i" loop=$images}>
+                                    <img src="<{$images[i]->getSrc(300, 300, 'fit')}>" alt="$images[i]->getDescription()|escape" <{$images[i]->getHtmlSize(300, 300, 'fit')}>/>
+                                <{/section}>
+
+                            <{elseif $images|@count < 3}>
+
+                                <{section name="i" loop=$images}>
+                                    <img src="<{$images[i]->getSrc(150, 150, 'box')}>" alt="$images[i]->getDescription()|escape" <{$images[i]->getHtmlSize(150, 150, 'box')}>/>
+                                <{/section}>
+
+                            <{elseif $images|@count < 6}>
+
+                                <{section name="i" loop=$images}>
+                                    <img src="<{$images[i]->getSrc(100, 100, 'box')}>" alt="$images[i]->getDescription()|escape" <{$images[i]->getHtmlSize(100, 100, 'box')}>/>
+                                    <{if $smarty.section.i.index%3 == 2}><br/><{/if}>
+                                <{/section}>
+
+                            <{else}>
+
+                                <{section name="i" loop=$images}>
+                                    <img src="<{$images[i]->getSrc(50, 50, 'box')}>" alt="$images[i]->getDescription()|escape" <{$images[i]->getHtmlSize(50, 50, 'box')}>/>
+                                    <{if $smarty.section.i.index%3 == 2}><br/><{/if}>
+                                <{/section}>
+
+                            <{/if}>
+
+                        </div>
+                    <{/if}>
+
+                </div></div></div><!--/.row /.container-->
+            </section>
+
+        </section><!--/#sitecontent-->
+        <{/cache}>
+        <{/if}>
+
+        <{include file="_include_footer.html"}>
+
+        <button id="totop">Til toppen</button>
+
+        <{include file="_include_cookiepolicy.html"}>
+
+    </div><!--/#site-->
+
+    <{include file="_include_side-basket.html"}>
+
+<{/strip}>

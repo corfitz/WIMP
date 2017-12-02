@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: "socialicons";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/socialicons.eot");
+    src: url("../fonts/socialicons.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/socialicons.woff") format("woff"),
+        url("../fonts/socialicons.ttf") format("truetype"),
+        url("../fonts/socialicons.svg#socialicons") format("svg");
+}
+
+[data-icon]:before {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    content: attr(data-icon);
+    font-family: "socialicons" !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    line-height: 1;
+    speak: none;
+    text-transform: none !important;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: "socialicons" !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    line-height: 1;
+    speak: none;
+    text-transform: none !important;
+}
+
+.icon-instagram:before {
+    content: "\64";
+}
+
+.icon-twitter:before {
+    content: "\66";
+}
+
+.icon-pinterest:before {
+    content: "\61";
+}
+
+.icon-linkedin:before {
+    content: "\65";
+}
+
+.icon-googleplus:before {
+    content: "\63";
+}
+
+.icon-facebook:before {
+    content: "\62";
+}

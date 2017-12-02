@@ -1,0 +1,31 @@
+<div id="newsletterpopup" class="<{if $settings.Nyhedsbrevspopup.Placering == 'Hoejre'}>right<{elseif $settings.Nyhedsbrevspopup.Placering == 'Venstre'}>left<{/if}>" style="background:<{$settings.Nyhedsbrevspopup.Farve}>;color:<{$settings.Nyhedsbrevspopup.Tekstfarve}>;border-color:<{$settings.Nyhedsbrevspopup.Rammefarve}>">
+    <div class="newsletterpopup-left">
+        <{if $settings.Nyhedsbrevspopup.Billede}>
+            <img src="<{$settings.Nyhedsbrevspopup.Billede->getSrc(350, 415, 'fit')}>" id="logo-img" alt="">
+        <{/if}>
+    </div>
+    <div class="newsletterpopup-right" style="color:<{$settings.Nyhedsbrevspopup.Tekstfarve}>">
+        <h3 class="newsletterpopup-headline"><{$settings.Nyhedsbrevspopup.Overskrift}></h3>
+        <div class="newsletterpopup-text"><{$settings.Nyhedsbrevspopup.Tekst}></div>
+        <form action="" id="newsletterpopup-form">
+            <input type="text" name="EMAIL" id="newsletterpopup-mail" placeholder="Indtast e-mail">
+            <button type="submit" class="btn btn-success"  name="subscribe" id="newsletterpopup-submit"><{$settings.Nyhedsbrevspopup.CallToAction}></button>
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="" tabindex="-1" value=""></div>
+        </form>
+    </div>
+
+    <div class="newsletterpopup-thankyou">
+        <{$settings.Nyhedsbrevspopup.Takketekst}>
+
+        <!-- Shoporama dev - remove this -->
+
+        <h4>FÅ HJÆLP AF DIN UDVIKLER TIL AT AKTIVERE DETTE</h4>
+
+        <!-- End-remove this -->
+
+    </div>
+
+    <button id="newsletterpopup-deactivate">&times;</button>
+</div>
+<button id="newsletterpopup-reactivate" class="<{if $settings.Nyhedsbrevspopup.Placering == 'Hoejre'}>right<{elseif $settings.Nyhedsbrevspopup.Placering == 'Venstre'}>left<{/if}>" style="background:<{$settings.Nyhedsbrevspopup.Genaktiveringsfarve}>;color:<{$settings.Nyhedsbrevspopup.Genaktiveringstekstfarve}>;"><{$settings.Nyhedsbrevspopup.Genaktiveringstekst}></button>
+<script type="text/javascript">var CookieLifeTime = <{$settings.Nyhedsbrevspopup.Cookielevetid}>; var popupDelay = <{$settings.Nyhedsbrevspopup.Forsinkelse}>; var minimumViews = <{$settings.Nyhedsbrevspopup.Antal_minimumsvisninger}>;</script>

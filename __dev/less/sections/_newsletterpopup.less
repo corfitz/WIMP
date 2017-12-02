@@ -1,0 +1,139 @@
+
+#newsletterpopup {
+    border: 2px solid #fff;
+    bottom: -600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    box-sizing: border-box;
+    padding: 20px;
+    position: fixed;
+    z-index: 800;
+
+    @media (max-width: @screen-xs-max) {
+        height: 450px;
+        margin: 0 5%;
+        max-width: 500px;
+        width: 90%;
+    }
+
+    @media (min-width: @screen-sm) {
+        width: 500px;
+        height: 300px;
+    }
+
+    &.left {
+        @media (min-width: @screen-sm) {
+            left: 30px;
+        }
+    }
+
+    &.right {
+        @media (min-width: @screen-sm) {
+            right: 30px;
+        }
+    }
+}
+
+#newsletterpopup-deactivate {
+    background: #000;
+    border: 2px solid #fff;
+    border-radius: 100px;
+    color: #fff;
+    height: 40px;
+    line-height: 1;
+    position: absolute;
+    right: -15px;
+    text-align: center;
+    top: -15px;
+    width: 40px;
+}
+
+#newsletterpopup-reactivate {
+    border: 0 none;
+    border-radius: 5px 5px 0 0;
+    bottom: -60px;
+    height: 60px;
+    line-height: 60px;
+    position: fixed;
+    text-align: center;
+    z-index: 799;
+
+    @media (max-width: @screen-xs-max) {
+        margin: 0 5%;
+        max-width: 500px;
+        width: 90%;
+    }
+
+    @media (min-width: @screen-sm) {
+        width: 500px;
+    }
+
+    &.left {
+        @media (min-width: @screen-sm) {
+            left: 30px;
+        }
+    }
+
+    &.right {
+        @media (min-width: @screen-sm) {
+            right: 30px;
+        }
+    }
+}
+
+.newsletterpopup-left {
+    float: left;
+
+    @media (max-width: @screen-xs-max) {
+        display: none;
+    }
+
+    @media (min-width: @screen-sm) {
+        margin-right: 20px;
+        min-height: 30px;
+        width: 170px;
+    }
+}
+
+.newsletterpopup-right {
+
+    @media (max-width: @screen-xs-max) {
+    }
+
+    @media (min-width: @screen-sm) {
+        float: right;
+        width: 266px;
+    }
+}
+
+h3.newsletterpopup-headline {
+
+}
+
+.newsletterpopup-text {
+
+}
+
+#newsletterpopup-form {
+    #newsletterpopup-mail {
+        border: 1px solid #f4f4f4;
+        border-radius: 2px;
+        color: #555;
+        line-height: 26px;
+        margin: 5px 0;
+        padding: 5px 10px;
+        width: 100%;
+    }
+
+    #newsletterpopup-submit {
+    }
+}
+
+.newsletterpopup-thankyou {
+    box-sizing: border-box;
+    display: none;
+    height: 100%;
+    padding: 30px 0 0 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}

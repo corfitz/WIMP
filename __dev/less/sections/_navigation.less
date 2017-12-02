@@ -1,0 +1,282 @@
+#site {
+    left: 0;
+    position: relative;
+    right: 0;
+    top: 0;
+    transition: all .2s ease-in-out;
+    width: 100%;
+}
+
+.takeover-close {
+    background: #333;
+    border: 0;
+    border-radius: 3px;
+    color: #fff;
+    display: block;
+    font-family: Arial, Helvetica, 'Hevletica neue', sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+    position: absolute;
+    right: 30px;
+    text-align: center;
+    top: 30px;
+    width: 30px;
+}
+
+#sitenav {
+
+    @media (max-width: @screen-sm-max) {
+        background: rgba(255, 255, 255, .98);
+        font-size: 20px;
+        height: 100%;
+        left: -95%;
+        overflow-scrolling: touch;
+        overflow-y: scroll;
+        padding-bottom: 50px;
+        position: fixed;
+        width: 95%;
+        top: 0;
+        transition: all 0.5s;
+        z-index: 1001;
+    }
+
+    @media (min-width: @screen-md) {
+        background: transparent;
+        display: block;
+        font-size: 14px;
+        height: auto;
+        text-transform: uppercase;
+        overflow: visible;
+        padding: 0;
+        position: static;
+        transform: none;
+        width: auto;
+
+        .takeover-close {
+            display: none;
+        }
+    }
+
+    @media (min-width: @screen-lg) {
+        font-size: 16px;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        @media (min-width: @screen-md) {
+            padding: 0;
+        }
+
+        > li {
+            border-bottom: 1px solid #efefef;
+            display: block;
+            font-weight: 300;
+            line-height: 50px;
+
+            a.tofrontpage {
+                @media (max-width: @screen-xs-max) {
+                    &:after {
+                        content: ' Forsiden';
+                    }
+
+                    i {
+                        display: none;
+                    }
+                }
+            }
+
+            @media (min-width: @screen-md) {
+                display: inline-block;
+            }
+
+            > a {
+                @media (min-width: @screen-md) {
+                    background: transparent;
+                    border-bottom: 0 none;
+                }
+            }
+
+            a {
+                color: @sitehead-fontcolor;
+                cursor: pointer;
+                display: block;
+                padding-left: 20px;
+
+                @media (min-width: @screen-md) {
+                    padding: 14px 9px;
+                }
+
+                @media (min-width: @screen-lg) {
+                    padding: 14px;
+                }
+
+                .transition(all 200ms ease;);
+
+                &:hover {
+                    background: rgba(0, 0, 0, .1);
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+            }
+
+            .subnav-expander {
+                background: transparent;
+                border: 0;
+                border-left: 1px solid #efefef;
+                float: right;
+                font-size: 180%;
+                height: 50px;
+                line-height: 50px;
+                margin: 0;
+                padding: 0;
+                width: 50px;
+
+                &:before {
+                    content: '+';
+                }
+
+                &.expanded {
+                    &:before {
+                        content: '–';
+                    }
+                    background: #f5f5f5;
+                }
+
+                @media (min-width: @screen-md) {
+                    display: none;
+                }
+            }
+
+            &._active {
+                a {
+                    border-top: 3px solid @brand-primary;
+
+                    &:hover {
+                        @media (min-width: @screen-md) {
+                            color: @sitehead-fontcolor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+body.toggled-sitenav {
+    #sitenav {
+        box-shadow: 0 0 100px 50px rgba(0, 0, 0, .4);
+        //transform: translate3d(0, 0, 0);
+        left: 0;
+        overflow-scrolling: touch;
+
+        li._active {
+            a {
+                border: 0 !important;
+            }
+        }
+    }
+}
+
+#sitenav-toggler {
+    background: transparent;
+    border: 0 none;
+    border-radius: @border-radius-base;
+    font-size: 20px;
+    height: 50px;
+    left: 20px;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    top: 15px;
+    width: 50px;
+
+    &:before {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: @screen-md) {
+    #logo-container,
+    #nav-container,
+    #sitesearch-container {
+        position: static !important;
+    }
+}
+
+#basket-toggler {
+    background: transparent;
+    border: 0 none;
+    border-radius: @border-radius-base;
+    color: @sitehead-fontcolor;
+    font-size: 14px;
+    height: 50px;
+    line-height: 1;
+    padding: 0;
+    position: absolute;
+    right: 20px;
+    text-align: center;
+    top: 15px;
+    width: 50px;
+
+    @media (min-width: @screen-md) {
+        float: right;
+        margin-right: 10px;
+        position: relative;
+        right: 0;
+        top: 5px;
+    }
+
+    &.cartfull {
+        background: #efefef;
+        color: #333;
+
+        &:after {
+            background: @brand-primary;
+            border-radius: 40px;
+            color: #fff;
+            content: (attr(data-quantity-count));
+            font-family: Helvetica, 'helvetica', Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            height: 24px;
+            line-height: 24px;
+            position: absolute;
+            right: -10px;
+            text-align: center;
+            top: -10px;
+            width: 24px;
+        }
+    }
+
+    &.cartempty {
+        &:after {
+            display: none;
+        }
+    }
+
+    &:before {
+        font-size: 25px;
+    }
+}
+
+@media (min-width: @screen-md) {
+    #basket-toggler {
+        margin-top: 10px;
+    }
+}
+
+#shopon {
+    margin-bottom: 5px;
+    width: 100%;
+
+    @media (min-width: @screen-sm) {
+        margin-bottom: 0;
+        width: auto;
+    }
+}

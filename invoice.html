@@ -1,0 +1,13 @@
+<{include file="_include_mails-header.html"}>
+
+<p>Hej <{$order->getOrderName()|escape}>,</p>
+
+<h4>Mange tak for din ordre!</h4>
+
+<p>Mange tak for din ordre på <{$webshop->getName()|escape}>. Kontakt os endelig, hvis du har spørgsmål.</p>
+
+<{include file="_include_mails-cta.html" cta="Følg din ordre" url=$order->getPublicUrl()|escape}>
+
+<p>Med venlig hilsen<br><{$webshop->getName()}></p>
+
+<{include file="_include_mails-footer.html"}>

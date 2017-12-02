@@ -1,0 +1,107 @@
+// Address form - step 2
+
+#form {
+    clear: both;
+}
+
+.form-row {
+    float: left;
+    position: relative;
+    width: 100%;
+}
+
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row input[type="tel"] {
+    background: #fafafa;
+    border: 1px solid #ccc;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 20px;
+    padding: 15px 15px 5px 15px;
+    width: 100%;
+}
+
+.form-row textarea {
+    background: #fafafa;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 15px 15px 5px 15px;
+    width: 100%;
+}
+
+.form-row-zip {
+    float: left;
+    margin-right: 5%;
+    position: relative;
+    width: 30% !important;
+}
+
+.form-row-city {
+    float: left;
+    position: relative;
+    width: 65% !important;
+}
+
+.form-row {
+    &.form-row-input {
+        label {
+            color: #ccc;
+            font-size: 60%;
+            left: 15px;
+            opacity: 0;
+            position: absolute;
+            top: 7px;
+            transition: all 0.3s ease !important;
+        }
+    }
+}
+
+.form-row {
+    &.form-row-input {
+        label.show {
+            opacity: 1;
+            top: 5px;
+        }
+    }
+}
+
+#form-checks {
+    .form-row {
+        margin: 5px 0;
+    }
+}
+
+.label-active {
+    color: #333;
+}
+
+#payment-address,
+#shipping-address {
+    clear: both;
+    float: left;
+    width: 100%;
+}
+
+#shipping-address {
+    margin-top: 30px;
+}
+
+#new-country-link {
+    display: block;
+    margin-bottom: 20px;
+}
+
+::-webkit-input-placeholder,
+:-moz-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder {
+    color: #555;
+}
+
+.focus:focus,
+.focus:focus::-webkit-input-placeholder,
+.focus:focus::-moz-placeholder,
+.focus:focus:-moz-placeholder {
+    color: transparent !important;
+}

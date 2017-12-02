@@ -1,0 +1,72 @@
+#brandidentity {
+    background-position: center center;
+    background-size: cover;
+    box-sizing: border-box;
+    min-height: 350px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    z-index: 0;
+
+    iframe {
+        height: 100%;
+        min-height: 100%;
+    }
+
+    input {
+        color: @text-color;
+    }
+
+    h1 {
+        font-size: 25px;
+        margin: 70px 20px 0 20px;
+        position: relative;
+        z-index: 2;
+
+        @media (min-width: @screen-sm) {
+            font-size: 35px;
+            margin: 200px 20px 0 20px;
+        }
+
+        &:after {
+            content: '—';
+            display: block;
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 0;
+            margin: 15px;
+        }
+    }
+
+    h3 {
+        font-size: 18px;
+        margin: 0 20px;
+        position: relative;
+        z-index: 2;
+
+        @media (min-width: @screen-sm) {
+            font-size: 22px;
+        }
+    }
+
+    @media (min-width: @screen-sm) {
+        min-height: 500px;
+    }
+
+    #brandidentity-overlay {
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+    }
+
+    #brandidentity-content {
+        @media (min-width: @screen-sm) {
+            padding: 0 80px;
+        }
+
+        @media (min-width: @screen-md) {
+            padding: 0 200px;
+        }
+    }
+}
